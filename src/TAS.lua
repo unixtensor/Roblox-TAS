@@ -1,6 +1,6 @@
 --[[
     TAS api made by: interpreterK
-    Repo link:
+    Repo link: https://github.com/interpreterK/Roblox-TAS
 
     Create TAS (Tool Assisted Speedrun) runs on roblox.
     [https://www.urbandictionary.com/define.php?term=tas]
