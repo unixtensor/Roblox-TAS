@@ -1,6 +1,6 @@
 --[[
     TAS api made by: interpreterK
-    Repo link:
+    Repo link: https://github.com/interpreterK/Roblox-TAS
 
     Create TAS (Tool Assisted Speedrun) runs on roblox.
     [https://www.urbandictionary.com/define.php?term=tas]
@@ -33,8 +33,8 @@
 local TAS = {
 	UseRawMovement = true,
 	PauseTime = 1/100,
-    Freezing = true,
-    MinMagnitude = 3
+	Freezing = true,
+	MinMagnitude = 3
 }
 TAS.__index = TAS
 TAS.__metatable = nil
@@ -58,8 +58,8 @@ function TAS . new(Player, Waypoints)
 			Play.MoveData = Waypoints
 		end
 		return setmetatable({
-            Player = Player,
-        }, TAS)
+			Player = Player,
+		}, TAS)
 	else
 		warn "Please specify a player 1st to create a new TAS."
 	end
@@ -67,33 +67,33 @@ function TAS . new(Player, Waypoints)
 end
 
 function TAS : Play()
-    if #Play.MoveData == 0 then
-        warn "No waypoints specified for a run."
-    else
-        if self.Player then
-            local Player = self.Player
-            local Character = Player.Character
-            local Root, Humanoid = GetCharRequirements(Character)
-    
-            if Root and Humanoid then
-                print "Requirements reached, Playing run."
-                
-                Play.UseRawMovement = self.UseRawMovement
-                Play.PauseTime = self.PauseTime
-                Play.Freezing = self.Freezing
-                Play.MinMagnitude = self.MinMagnitude
+	if #Play.MoveData == 0 then
+		warn "No waypoints specified for a run."
+	else
+		if self.Player then
+			local Player = self.Player
+			local Character = Player.Character
+			local Root, Humanoid = GetCharRequirements(Character)
 
-                Play : PlayAttempt({
-                    [1] = Root,
-                    [2] = Humanoid
-                })
-            else
-                warn "Could not reach the requirements to play the run..."
-            end
-        else
-            warn "Please specify a player 1st to play a TAS."
-        end
-    end
+			if Root and Humanoid then
+				print "Requirements reached, Playing run."
+
+				Play.UseRawMovement = self.UseRawMovement
+				Play.PauseTime = self.PauseTime
+				Play.Freezing = self.Freezing
+				Play.MinMagnitude = self.MinMagnitude
+
+				Play : PlayAttempt({
+					[1] = Root,
+					[2] = Humanoid
+				})
+			else
+				warn "Could not reach the requirements to play the run..."
+			end
+		else
+			warn "Please specify a player 1st to play a TAS."
+		end
+	end
 end
 
 return TAS
